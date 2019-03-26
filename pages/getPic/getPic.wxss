@@ -1,0 +1,21 @@
+/* pages/test.wxss */
+.touchWrap {  
+    transform-origin: center;  
+    position: absolute;  
+    z-index: 100;  
+}  
+.imgWrap {  
+    box-sizing: border-box;  
+    width: 100%;  
+    transform-origin: center;  
+    float: left;  
+    border: 5rpx transparent dashed;  
+}
+.o {
+    width: 40rpx;
+    height: 40rpx;
+}
+.x {
+    width: 40rpx;
+    height: 40rpx;
+}

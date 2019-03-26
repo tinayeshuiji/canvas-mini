@@ -1,0 +1,69 @@
+<view>
+  <view class="save-line">
+    <view class="save" bindtap='goSaveBuy'>保存/购买</view>
+    <view class="save" wx:if="{{index===999}}" bindtap='goBuy'>先购买</view>
+  </view>
+    <!-- <canvas canvas-id="myCanvas"  style="width:{{canvasWidth}}px; height: {{canvasHeight}}px; margin:0 auto"  
+     bindtouchstart="touchStart" disable-scroll="false"/>   -->
+    <!-- <text class="design-phone-txt" wx:if="{{phoneTxtShow}}">请将喜爱的图片拖动到这里</text> 
+     <input type="text" focus='true' class="font-input" bindblur="blurEvent" wx:if="{{fontTxtShow}}" ></input> -->
+     <canvas canvas-id='second' style="width:{{canvasWidth}}px; height: {{canvasHeight}}px; margin:0 auto"
+      bindtouchstart="start" bindtouchmove="move"></canvas>
+    <view wx:if="{{cutBoxShow}}" class="cut-box">
+      <view class="{{(index===0 || index===2)?'slide-box':'scrawl-box'}}" bindtap='' wx:for="{{cutBox}}" wx:for-index="index"
+        wx:key="{{index}}" wx:for-item="item" bindtap='selectCutStyle' data-cutindex="{{index}}">
+        <image src='{{item.imgUrl}}' class="{{index==0?'cut':index===1?'scrawl':'delete'}}"></image>
+      </view>
+    </view>
+
+  <view class="save-line">
+    <view class="down-circle">
+      <image src="/images/icon/down.png" class="down"></image>
+    </view>
+  </view>
+  <view class="design-box">
+    <scroll-view scroll-x="true" class="photo-list" wx:if="{{status==0}}" >
+      <image src='{{item.imgUrl}}' class="photo-item-pic" bindtap='picSelect' wx:for="{{picList}}" wx:for-index="index" 
+       wx:key="{{index}}"  wx:for-item="item" data-index="{{index}}"></image>
+       <image src="{{item}}" class="photo-item-pic" wx:for="{{picPaths}}" wx:for-index="index"  
+         wx:key="{{index}}"  wx:for-item="item"  data-index="{{index}}" bindtap='choosePic'></image>
+      <!-- <view class="close-box">
+        <image src='/images/icon/close.png' class="close"></image>
+      </view> -->
+    </scroll-view>
+    <scroll-view  scroll-x="true" class="photo-list" wx:if="{{status==1 && templatelist!==''}}" >
+      <image src='{{hostName+item.mtUrl}}' class="photo-item-pic" wx:for="{{templatelist}}" wx:for-index="index"
+        wx:key="{{index}}" wx:for-item="item" bindtap='chooseTemplate' data-idx="{{index}}"></image>
+    </scroll-view>
+    <scroll-view scroll-x="true"  wx:if="{{status==2}}">
+       <view class="sticker-list"> 
+        <view class="sticker-item" wx:for="{{stickerlist}}" wx:for-index="index"  wx:key="{{index}}"  wx:for-item="item" 
+          bindtap='chooseSticker' data-index="{{index}}"> 
+          <image src='{{hostName+item.msUrl}}' class="sticker-item-pic"></image>
+          <text class="sticker-title">{{item.msName}}</text> 
+        </view> 
+       </view>
+    </scroll-view>
+    <scroll-view  scroll-x="true" class="photo-list" wx:if="{{status==3}}">
+      <view class="color-box">
+        <view  class="color-box-list">
+          <view class="color-box-item" wx:for="{{colorList}}" wx:for-index="index" 
+             wx:key="{{index}}"  wx:for-item="item" style='background:{{item}}' bindtap='changeColorBox' data-color="{{item}}"> 
+          </view>
+        </view>
+        <view class="add-color-box">
+          <image src="/images/icon/add-color.png" class="add-color"></image>
+        </view>
+      </view>
+      <view class="txt-box-list">
+        <image src='{{hostName+item.mfImage}}' wx:for="{{fontlist}}" wx:for-index="index" 
+         wx:key="{{index}}"  wx:for-item="item" class="font-pic"></image>
+        
+      </view>
+    </scroll-view>
+  </view>
+  <view class="food-nav">
+    <text class="food-title {{status==index?'nav-active' : ''}}"  bindtap='changeStatus' wx:for="{{statusTitle}}"
+     wx:for-index="index" wx:key="{{index}}" wx:for-item="item" data-index="{{index}}">{{item}}</text>
+  </view>
+</view>

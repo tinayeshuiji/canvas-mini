@@ -1,0 +1,12 @@
+<!-- <canvas canvas-id="myCanvas" style="border: 1px solid;width:187px;height:333px; margin:0 auto" disable-scroll="false" />
+<view class="box" style="position:relative;width:50px; height:50px;margin: 0 auto;-webkit-transform:rotate({{angle}}deg);">
+  <image src='/images/banner/6.png' style="width:50px; height:50px;border:1px solid red;margin: 0 auto;display:block;"></image>
+  <image src='/images/icon/add.png' style="width:36rpx;height:36rpx; position:absolute;right:-18rpx;bottom:-18rpx;" bindtouchstart="touchStart" bindtouchmove="move" bindtouchend='end'></image>
+</view> -->
+<movable-area scale-area style="width:187px; height: 333px; margin:0 auto;border:1px solid red;">
+  <movable-view x="{{x}}" y="{{y}}" direction="all" bindchange="onChange" bindscale="onScale" scale scale-min="0.5" scale-max="4" scale-value="{{scale}}" style="height:{{height}}px;width:{{width}}px; border:1px solid blue;position:relative;-webkit-transform:rotate({{angle}}deg);" >
+    <image src='/images/banner/6.png' style="width:50px; height:50px;" ></image>
+    <image src='/images/icon/add.png' style="width:36rpx;height:36rpx; position:absolute;right:-18rpx;bottom:-18rpx;" bindtouchstart="touchStart" bindtouchmove="move" bindtouchend='end'></image>
+  </movable-view>
+</movable-area>
+ 
